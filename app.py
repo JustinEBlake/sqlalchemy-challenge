@@ -12,7 +12,6 @@ from sqlalchemy import create_engine, func, inspect
 from flask import Flask, jsonify
 
 
-
 #################################################
 # Database Setup
 #################################################
@@ -48,11 +47,13 @@ app = Flask(__name__)
 def welcome():
     """Lists all available routes."""
     return (
-        f"Available Routes:<br/>"
-        f"/api/v1.0/precipitation<br/>"
-        f"/api/v1.0/stations<br/>"
-        f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
+        f"<b>Available Routes:</b><br/>"
+        f"🛜/api/v1.0/precipitation<br/>"
+        f"🛜/api/v1.0/stations<br/>"
+        f"🛜/api/v1.0/tobs<br/>"
+        f"🛜/api/v1.0/start<br/>"
+        f"🛜/api/v1.0/start/end<br/>"
+        f"⚠️ start/end format = (yyyy-mm-dd)"
     )
 
 
@@ -147,6 +148,7 @@ def get_start_date(start):
 
     return(jsonify(temp_results))
 
+
 #------------------------------Start Date--------------------------------------------------------
 @app.route("/api/v1.0/<start>/<end>")
 def start_end(start, end):
@@ -174,6 +176,7 @@ def start_end(start, end):
 
 
     return(jsonify(temp_results))
+
 
 #-------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
